@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<HorizontalScrollView
+    android:id="@+id/chipscroll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="?colorSecondary"
+
+        app:checkedChip="@id/chip_popular"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_popular"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checkable="true"
+            android:text="Popular"
+            android:textSize="18sp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_upcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checkable="true"
+            android:text="Upcoming"
+            android:textSize="18sp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_toprated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:checkable="true"
+            android:text="Top Rated"
+            android:textSize="18sp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_nowplaying"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Now Playing"
+            android:textSize="18sp" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+</HorizontalScrollView>
+<androidx.recyclerview.widget.RecyclerView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movieslist"
+    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+    android:layout_below="@id/chipscroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:listitem="@layout/moviecard" />
+</RelativeLayout>
