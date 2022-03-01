@@ -11,7 +11,7 @@ import com.example.tmdb.R
 import com.example.tmdb.data.MovieData
 import com.example.tmdb.data.MovieListData
 import com.example.tmdb.databinding.MoviecardBinding
-import com.example.tmdb.fragments.MovieDescription
+
 
 class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Adapter<dashboardrecycleradapter.viewHolder>() {
 
@@ -23,7 +23,7 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
         this.moviesList = moviesList
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): dashboardrecycleradapter.viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.moviecard, parent, false)
         binding = MoviecardBinding.bind(view)
         val viewHolderObject= viewHolder(view, binding)
@@ -33,7 +33,7 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
         return viewHolderObject
     }
 
-    override fun onBindViewHolder(holder: dashboardrecycleradapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: viewHolder, position: Int) {
         val BASE_URL = "https://image.tmdb.org/t/p/original"
         val dataObj = moviesList?.results?.get(position)
         if (dataObj != null) {
@@ -60,7 +60,7 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
 
         //var movieimg = binding.movieimg
         var rating = binding.ratingBar
-        val clContent = binding.clContent
+
     }
 
 

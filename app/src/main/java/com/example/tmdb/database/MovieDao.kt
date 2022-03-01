@@ -4,20 +4,21 @@ import androidx.room.Insert
 import androidx.room.Delete
 import androidx.room.Dao
 import androidx.room.Query
+import com.example.tmdb.data.MovieData
 
 
 @Dao
 interface MovieDao{
 
     @Insert
-    fun insertMovie(movieEntitity: MovieEntity)
+   suspend fun insertMovie(movieEntity: MovieEntity)
 
     @Delete
-    fun deleteMovie(movieEntitity: MovieEntity)
+   suspend fun deleteMovie(movieEntity: MovieEntity)
 
     @Query("SELECT * FROM movies")
-    fun getAllMovies(): List<MovieEntity>
+   suspend fun getMovies(): List<MovieEntity>
 
     @Query("SELECT * FROM movies where movie_id= :movieId")
-    fun getMovieById(movieId: String): MovieEntity
+    suspend fun getMovieById(movieId: String): MovieEntity
 }

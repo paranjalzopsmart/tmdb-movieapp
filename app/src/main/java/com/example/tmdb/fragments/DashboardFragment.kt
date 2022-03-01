@@ -15,14 +15,12 @@ import com.example.tmdb.adapters.dashboardrecycleradapter
 import com.example.tmdb.apiServices.movieApiInterface
 import com.example.tmdb.data.MovieData
 import com.example.tmdb.databinding.DashboardBinding
-import com.example.tmdb.repository.repository
-import com.example.tmdb.viewmodels.MyViewModelFactory
 import com.example.tmdb.viewmodels.dashboardViewModel
 
-class DashboardFragment : Fragment(), OnClick {
+class DashboardFragment(private val viewModel: dashboardViewModel) : Fragment(), OnClick {
 
     lateinit var binding: DashboardBinding
-    lateinit var viewModel: dashboardViewModel
+
     private val retrofitService = movieApiInterface.getInstance()
     val adapter = dashboardrecycleradapter(this)
 
@@ -32,8 +30,7 @@ class DashboardFragment : Fragment(), OnClick {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this, MyViewModelFactory(repository(retrofitService))).
-        get(dashboardViewModel::class.java)
+
 
         binding = DashboardBinding.inflate(layoutInflater)
 

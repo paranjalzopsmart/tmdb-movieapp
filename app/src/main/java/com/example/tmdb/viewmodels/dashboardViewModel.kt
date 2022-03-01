@@ -3,13 +3,13 @@ package com.example.tmdb.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tmdb.repository.repository
+import com.example.tmdb.repository.Repository
 import com.example.tmdb.data.MovieListData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class dashboardViewModel (private val repository: repository): ViewModel(){
+class dashboardViewModel (private val repository: Repository): ViewModel(){
 
     private val _movieList = MutableLiveData<MovieListData>()
     val movieList: LiveData<MovieListData> = _movieList
@@ -30,7 +30,6 @@ class dashboardViewModel (private val repository: repository): ViewModel(){
             }
 
             override fun onFailure(call: Call<MovieListData>, t: Throwable) {
-                //TODO("Not yet implemented")
                 errorMessage.postValue(t.message)
             }
         })
