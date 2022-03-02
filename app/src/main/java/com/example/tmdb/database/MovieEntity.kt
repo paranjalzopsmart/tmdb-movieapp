@@ -4,11 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName= "movies")
+@Entity(tableName = "movies")
 data class MovieEntity(
-    @PrimaryKey val movie_id: Int,
-    @ColumnInfo(name = "movie_name") val movieName: String,
-    //@ColumnInfo(name = "movie_rating") val movieRating: String,
-    //@ColumnInfo(name = "movie_image") val movieImage: String,
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "vote_average") val vote_average: String,
+    @ColumnInfo(name = "backdrop_path") val backdrop_path: String,
+    @ColumnInfo(name = "poster_path") val poster_path: String,
+    @ColumnInfo(name = "overview") val overview: String,
+    @ColumnInfo(name = "release_date") val release_date: String
 )

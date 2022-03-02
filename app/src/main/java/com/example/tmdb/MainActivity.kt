@@ -1,9 +1,9 @@
 package com.example.tmdb
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tmdb.apiServices.movieApiInterface
 import com.example.tmdb.database.DatabaseHelperImpl
@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main)
 
+
+
         repository = Repository(
             movieApiInterface = movieApiInterface.getInstance(),
             databaseHelperImpl = DatabaseHelperImpl(MovieDatabase.DatabaseBuilder.getInstance(applicationContext).movieDao())
@@ -37,4 +39,5 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
     }
+
 }

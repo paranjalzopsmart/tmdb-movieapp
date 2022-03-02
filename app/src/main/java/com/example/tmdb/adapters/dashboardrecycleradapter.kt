@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdb.R
-import com.example.tmdb.data.MovieData
 import com.example.tmdb.data.MovieListData
+import com.example.tmdb.database.MovieEntity
 import com.example.tmdb.databinding.MoviecardBinding
 
 
@@ -17,7 +17,6 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
 
     lateinit var binding : MoviecardBinding
     var moviesList: MovieListData? = null
-    //val descriptionfrag = MovieDescription()
 
     fun setMovieList(moviesList: MovieListData){
         this.moviesList = moviesList
@@ -25,10 +24,11 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.moviecard, parent, false)
+
         binding = MoviecardBinding.bind(view)
         val viewHolderObject= viewHolder(view, binding)
         view.setOnClickListener {
-            listener.onItemClicked(moviesList!!.results[viewHolderObject.adapterPosition])
+            listener.onItemClicked(moviesList!!.results[viewHolderObject.absoluteAdapterPosition])
         }
         return viewHolderObject
     }
@@ -68,5 +68,5 @@ class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Ada
 
 
 interface OnClick{
-    fun onItemClicked(item: MovieData)
+    fun onItemClicked(item: MovieEntity)
 }

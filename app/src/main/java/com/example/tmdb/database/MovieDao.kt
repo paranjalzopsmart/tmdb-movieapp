@@ -4,7 +4,6 @@ import androidx.room.Insert
 import androidx.room.Delete
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.tmdb.data.MovieData
 
 
 @Dao
@@ -19,6 +18,11 @@ interface MovieDao{
     @Query("SELECT * FROM movies")
    suspend fun getMovies(): List<MovieEntity>
 
-    @Query("SELECT * FROM movies where movie_id= :movieId")
+    @Query("SELECT * FROM movies where id= :movieId")
     suspend fun getMovieById(movieId: String): MovieEntity
+
+    @Query("SELECT count(*) FROM movies where id = :movieId")
+    suspend fun isMovieInTable(movieId: String): Int
+
+
 }

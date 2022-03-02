@@ -7,4 +7,7 @@ interface MovieDatabaseHelper {
     suspend fun getMovies(): List<MovieEntity>
     suspend fun insertMovie(movie: MovieEntity)
     suspend fun deleteMovie(movie: MovieEntity)
-}
+    suspend fun isMovieInTable(movieId: String): Int
+
+
+    }

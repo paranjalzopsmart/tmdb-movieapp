@@ -10,19 +10,21 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     >
+
+
+
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_group"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:background="?colorSecondary"
-
+        android:background="@color/black"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
         app:checkedChip="@id/chip_popular"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_popular"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -46,27 +48,30 @@
             android:background="@color/white"
             android:checkable="true"
             android:text="Top Rated"
+
             android:textSize="18sp" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_nowplaying"
+            android:id="@+id/chip_favourites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
-            android:text="Now Playing"
+            android:text="Favourites"
+            android:background="@color/white"
             android:textSize="18sp" />
+
 
 
     </com.google.android.material.chip.ChipGroup>
 </HorizontalScrollView>
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+    <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/movieslist"
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
     android:layout_below="@id/chipscroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:listitem="@layout/moviecard" />
+
 </RelativeLayout>

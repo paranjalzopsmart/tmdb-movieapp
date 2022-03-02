@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TMDB</string>
+    <string name="dashboard_screen_name">Movies List</string>
+    <string name="description_screen_name">Movie Details</string>
     <string name="rating">rating</string>
     <string name="sample">sample</string>
     <!-- TODO: Remove or change this placeholder text -->

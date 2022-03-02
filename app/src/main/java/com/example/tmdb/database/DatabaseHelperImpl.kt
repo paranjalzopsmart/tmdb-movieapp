@@ -1,7 +1,5 @@
 package com.example.tmdb.database
 
-import com.example.tmdb.data.MovieData
-
 
 class DatabaseHelperImpl(
     private val movieDao: MovieDao
@@ -20,4 +18,9 @@ class DatabaseHelperImpl(
     override suspend fun deleteMovie(movie: MovieEntity) {
         movieDao.deleteMovie(movie)
     }
+
+    override suspend fun isMovieInTable(movieId: String): Int{
+        return movieDao.isMovieInTable(movieId)
+    }
+
 }
