@@ -10,14 +10,14 @@ import com.bumptech.glide.Glide
 import com.example.tmdb.R
 import com.example.tmdb.database.MovieEntity
 import com.example.tmdb.databinding.FragmentMovieDescriptionBinding
-import com.example.tmdb.viewmodels.dashboardViewModel
+import com.example.tmdb.viewmodels.DashboardViewModel
 
 class MovieDescription(val MovieDataObject: MovieEntity,
-    val viewModel: dashboardViewModel
+    val viewModel: DashboardViewModel
 ) : Fragment() {
-
     lateinit var binding: FragmentMovieDescriptionBinding
     val Base_URL: String = "https://image.tmdb.org/t/p/original"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,6 @@ class MovieDescription(val MovieDataObject: MovieEntity,
                     .into(binding.movieBackdrop)
             }
         }
-
         viewModel.isFav.observe(viewLifecycleOwner) {
             if (viewModel.isFav.value!!){
                 //Log.d("desc", "white")
@@ -64,11 +63,9 @@ class MovieDescription(val MovieDataObject: MovieEntity,
                 )
             }
         }
-
         binding.button.setOnClickListener {
             viewModel.onButtonPress(MovieDataObject)
         }
-
         return binding.root
     }
 }

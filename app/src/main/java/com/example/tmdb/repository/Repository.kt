@@ -1,14 +1,14 @@
 package com.example.tmdb.repository
 
-import com.example.tmdb.apiServices.movieApiInterface
+import com.example.tmdb.apiServices.MovieApiInterface
 import com.example.tmdb.database.DatabaseHelperImpl
-import com.example.tmdb.database.MovieDatabaseHelper
 
-class Repository (val movieApiInterface: movieApiInterface,
+
+class Repository (val MovieApiInterface: MovieApiInterface,
                   val databaseHelperImpl: DatabaseHelperImpl
                   ){
 
-     fun getMovieListquery(category: String) = movieApiInterface.getMovieListquery(category)
+     fun getMovieListquery(category: String) = MovieApiInterface.getMovieListquery(category)
 
 
 }

@@ -13,7 +13,7 @@ import com.example.tmdb.database.MovieEntity
 import com.example.tmdb.databinding.MoviecardBinding
 
 
-class dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Adapter<dashboardrecycleradapter.viewHolder>() {
+class Dashboardrecycleradapter(private val listener: OnClick) : RecyclerView.Adapter<Dashboardrecycleradapter.viewHolder>() {
 
     lateinit var binding : MoviecardBinding
     var moviesList: MovieListData? = null

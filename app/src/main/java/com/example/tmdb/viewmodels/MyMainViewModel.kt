@@ -9,8 +9,8 @@ class MyViewModelFactory constructor(private val repository: Repository): ViewMo
 
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(dashboardViewModel::class.java)) {
-            dashboardViewModel(this.repository) as T
+        return if (modelClass.isAssignableFrom(DashboardViewModel::class.java)) {
+            DashboardViewModel(this.repository) as T
         } else {
             throw IllegalArgumentException("viewmodel not found")
         }

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface movieApiInterface {
+interface MovieApiInterface {
 
 
     @GET("movie/{category}?api_key=286fe5ed7f42deec75f227d9df455b36&language=en-US")
@@ -20,15 +20,15 @@ interface movieApiInterface {
 
 
     companion object{
-        var retroService: movieApiInterface? = null
+        var retroService: MovieApiInterface? = null
 
-        fun getInstance(): movieApiInterface{
+        fun getInstance(): MovieApiInterface{
             if (retroService == null){
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://api.themoviedb.org/3/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                retroService = retrofit.create(movieApiInterface::class.java)
+                retroService = retrofit.create(MovieApiInterface::class.java)
             }
             return retroService!!
         }

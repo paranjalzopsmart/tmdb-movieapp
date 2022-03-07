@@ -12,18 +12,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class dashboardViewModel (val repository: Repository): ViewModel(){
+class DashboardViewModel (val repository: Repository): ViewModel(){
 
     private val _movieList = MutableLiveData<MovieListData>()
     val movieList: LiveData<MovieListData> = _movieList
     private val _favouriteMovies = MutableLiveData<List<MovieEntity>>()
     val favouriteMovies: LiveData<List<MovieEntity>> = _favouriteMovies
-
     private val _currentMovie  = MutableLiveData<String>("")
-
     private val _isFav = MutableLiveData<Boolean>(false)
     val isFav: LiveData<Boolean> = _isFav
-
     val errorMessage = MutableLiveData<String>()
     private val category = MutableLiveData<String>("popular")
 
@@ -31,7 +28,6 @@ class dashboardViewModel (val repository: Repository): ViewModel(){
         category.value = string
         getMovieListquery (string)
     }
-
     fun getMovieListquery(category: String){
         val response = repository.getMovieListquery(category)
         response.enqueue(object : Callback<MovieListData>{
@@ -61,12 +57,10 @@ class dashboardViewModel (val repository: Repository): ViewModel(){
             _favouriteMovies.value = repository.databaseHelperImpl.getMovies()
         }
     }
-
-
     fun changeMovie(string: String){
         viewModelScope.launch {
             _currentMovie.postValue(string)
-            _isFav.postValue(isMovieInTable(_currentMovie.value!!)!!)
+            _isFav.postValue(isMovieInTable(_currentMovie.value!!))
         }
     }
 
@@ -81,5 +75,4 @@ class dashboardViewModel (val repository: Repository): ViewModel(){
             }
         }
     }
-
 }
