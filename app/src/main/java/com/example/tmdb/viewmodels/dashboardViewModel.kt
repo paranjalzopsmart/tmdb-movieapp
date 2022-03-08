@@ -7,12 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.tmdb.repository.Repository
 import com.example.tmdb.data.MovieListData
 import com.example.tmdb.database.MovieEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class DashboardViewModel (val repository: Repository): ViewModel(){
+@HiltViewModel
+class DashboardViewModel @Inject constructor(val repository: Repository): ViewModel(){
 
     private val _movieList = MutableLiveData<MovieListData>()
     val movieList: LiveData<MovieListData> = _movieList
@@ -42,7 +45,7 @@ class DashboardViewModel (val repository: Repository): ViewModel(){
 
     }
     suspend fun isMovieInTable(id: String): Boolean{
-        val movie = repository.databaseHelperImpl.isMovieInTable(id)
+        val movie = repository.movieDao.isMovieInTable(id)
 
         if (movie > 0)
             return true
@@ -54,7 +57,7 @@ class DashboardViewModel (val repository: Repository): ViewModel(){
     fun showFav(){
         //var favouriteMovies: List<MovieEntity>
         viewModelScope.launch {
-            _favouriteMovies.value = repository.databaseHelperImpl.getMovies()
+            _favouriteMovies.value = repository.movieDao.getMovies()
         }
     }
     fun changeMovie(string: String){
@@ -67,10 +70,10 @@ class DashboardViewModel (val repository: Repository): ViewModel(){
     fun onButtonPress(movieclass: MovieEntity) {
         viewModelScope.launch {
             if (!isFav.value!!) {
-                repository.databaseHelperImpl.insertMovie(movieclass)
+                repository.movieDao.insertMovie(movieclass)
                 _isFav.value = true
             } else {
-                repository.databaseHelperImpl.deleteMovie(movieclass)
+                repository.movieDao.deleteMovie(movieclass)
                 _isFav.value = false
             }
         }

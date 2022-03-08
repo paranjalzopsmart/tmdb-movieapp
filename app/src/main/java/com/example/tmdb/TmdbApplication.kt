@@ -1,16 +1,7 @@
 package com.example.tmdb
 
 import android.app.Application
-import com.example.tmdb.daggerImpl.AppComponent
-import com.example.tmdb.daggerImpl.AppModule
-import com.example.tmdb.daggerImpl.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
-class TmdbApplication : Application() {
-
-    var tmdbComponent = initDagger(this)
-
-    private fun initDagger(app: TmdbApplication): AppComponent =
-        DaggerAppComponent.builder()
-            .appModule(AppModule(app))
-            .build()
-}
+@HiltAndroidApp
+class TmdbApplication : Application()
