@@ -1,7 +1,8 @@
-package com.example.tmdb
+package com.example.tmdb.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class TmdbApplication : Application()
+class TMDBApplication : Application()
+

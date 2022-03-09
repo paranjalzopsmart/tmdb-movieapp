@@ -1,8 +1,8 @@
-package com.example.tmdb.DI
+package com.example.tmdb.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.tmdb.database.MovieDatabase
+import com.example.tmdb.models.databse.MovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

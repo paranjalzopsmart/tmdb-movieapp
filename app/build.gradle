@@ -70,4 +70,7 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.4.0'
 
 
+    // paging 3
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-beta03"
+
 }

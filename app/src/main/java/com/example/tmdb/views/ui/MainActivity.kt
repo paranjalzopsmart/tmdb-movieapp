@@ -1,20 +1,14 @@
-package com.example.tmdb
+package com.example.tmdb.views.ui
 
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.tmdb.apiServices.MovieApiInterface
-import com.example.tmdb.database.DatabaseHelperImpl
-import com.example.tmdb.database.MovieDatabase
-import com.example.tmdb.fragments.DashboardFragment
-import com.example.tmdb.repository.Repository
-import com.example.tmdb.viewmodels.MyViewModelFactory
-import com.example.tmdb.viewmodels.DashboardViewModel
+import com.example.tmdb.R
+import com.example.tmdb.views.ui.fragments.DashboardFragment
+import com.example.tmdb.views.viewmodels.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,16 +19,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
         val dashboardFragment = DashboardFragment(viewModel = dashboardViewModel)
-
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl, dashboardFragment)
             commit()
         }
     }
-
 }
